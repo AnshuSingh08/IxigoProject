@@ -207,6 +207,19 @@ public class Ixigo {
 						"Airlines name:" + returnairlines + ", Fare:" + returnprice + ", departTime:" + returnTime);
 			}
 		}
+		
+		driver.findElement(By.xpath("//div[@class='result-col-inner']/div[1]/div[1]")).click();
+		//System.out.println("depart results size:" + divs.size());
+
+		//click on book
+		driver.findElement(By.xpath("//div[@class='book-cta']")).click();
+		System.out.println("book button clicked");
+		Thread.sleep(2000);
+		WebDriverWait waitBaggagePage = new WebDriverWait(driver, 200);
+		waitBaggagePage.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//div[@class='fare-dtl']"))));
+		System.out.println("Fare displayed successfully");
+		System.out.println("Continue after login");
+		
 
 		driver.close();
 	}
